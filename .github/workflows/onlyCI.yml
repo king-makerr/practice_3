@@ -1,0 +1,35 @@
+name: CI - Maven
+
+on:
+  push
+jobs:
+  maven-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4.2.2
+      - name: Setup java JDK
+        uses: actions/setup-java@v3.14.1
+        with:
+         java-version: '17'
+         distriution: 'oracle'
+## steps for creating a built
+      - run: mvn --batch-mode --update-snapshots verify ## built creation
+      - run: mkdir staging && cp target/*.jar staging  ## creating a staging folder in our workflow, copy from target and pasting to a folder name having .jar extentsion (staging)
+## built completed
+
+## packaging
+## upload a build artifacts
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: Package
+          path: staging
+
+
+         
+        
+      
+    
+
