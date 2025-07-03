@@ -15,8 +15,8 @@ jobs:
           java-version: '17'
           distribution: 'microsoft'
 
-        name: Check Java installed
-        run:echo java --version
+      - name: Check Java installed
+        run: echo java --version
          
           
       
