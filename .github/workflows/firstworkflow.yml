@@ -1,1 +1,23 @@
+name: First workflow
+
+on: push  ## trigger
+
+jobs:
+  echo-ubuntu-runner:
+    runs-on: ubuntu-latest  ## I am providing the vm to run my code in CI and make built
+    steps:
+      - name: Checkout code  ## bring the code to local 
+        uses: actions/checkout@v4.2.2
+        ## let's suppose we are using java code hence we will require java built
+      - name: checkout code
+        uses: actions/setup-java@v3.14.1
+        with:
+          java-version: '17'
+          distribution: 'microsoft'
+
+        name: Check Java installed
+        run:echo java --version
+         
+          
+      
 
